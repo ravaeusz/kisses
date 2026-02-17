@@ -1,65 +1,178 @@
-import Image from "next/image";
+'use client'
+
+import CardsHeadPieces from '../components/cardsHeadPieces'
+import CardsTop from '@/components/cardsTop'; 
+import CardsBag from '@/components/cardsBag';
+import CardsSaias from '@/components/cardsSaias';
+import { useState } from 'react';
+import {productsHeadPieces, productsTop, productsBag, productsSaias} from '../data/data'
+import Details from "../components/details.jsx"
+import Footer from '../components/Footer'
 
 export default function Home() {
+
+const [selectedIdProduct, setSelectedIdProduct] = useState(null);
+const [showProduct, setShowProduct] = useState(false);
+const [currentImage, setCurrentImage] = useState(0);
+const [currentCategory, setCurrentCategory] = useState(0)
+
+const allProducts = [
+  ...productsHeadPieces,
+  ...productsTop,
+  ...productsBag,
+  ...productsSaias
+]
+
+const selectedProduct = allProducts.find(
+  (product) => product.id === selectedIdProduct
+);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+<div className="mt-20">
+  <div className="
+    flex 
+    gap-6 
+    overflow-x-auto 
+    px-4
+    scrollbar-hide
+    md:justify-center
+    pb-5
+  ">
+    
+    <button onClick={() => {
+      setCurrentCategory(1)
+    }} className=" hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
+      <img className="w-24 h-24 rounded-full border object-cover" src="/categories/head.png" />
+      <h1>Head Pieces</h1>
+    </button>
+    
+    <button onClick={() => {
+      setCurrentCategory(2)
+    }} className="hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
+      <img className="w-24 h-24 rounded-full border object-cover" src="/categories/top.png" />
+      <h1>Tops</h1>
+    </button>
+    <button onClick={() => {
+      setCurrentCategory(3)
+    }} className="hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
+      <img className="w-24 h-24 rounded-full border object-cover" src="/categories/bags.png" />
+      <h1>Bags</h1>
+    </button>
+
+
+
+    <button onClick={() => {
+      setCurrentCategory(4)
+    }} className="hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
+      <img className="w-24 h-24 rounded-full border object-cover" src="/categories/saia.png" />
+      <h1>Saias & Shorts</h1>
+    </button>
+    <button onClick={() => {
+      setCurrentCategory(0)
+    }} className="hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
+      <img className="w-24 h-24 rounded-full border object-cover" src="/categories/todos.png" />
+      <h1>Todas</h1>
+    </button>
+
+  </div>
+</div>
+<div className="flex justify-center mt-20">
+ <div className="
+  grid
+  grid-cols-1
+  sm:grid-cols-2
+  lg:grid-cols-2
+  xl:grid-cols-4
+  gap-8
+  justify-items-center
+">
+
+  {(currentCategory === 0 || currentCategory === 1) &&
+  productsHeadPieces.map((product) => (
+    <CardsHeadPieces
+      key={product.id}
+      id={product.id}
+      src={product.src[0]}
+      title={product.title}
+      onView={() => {
+        setSelectedIdProduct(product.id);
+        setCurrentImage(0);
+        setShowProduct(true);
+      }}
+    />
+  ))}
+
+{(currentCategory === 0 || currentCategory === 2) &&
+  productsTop.map((product) => (
+    <CardsTop
+      key={product.id}
+      id={product.id}
+      src={product.src[0]}
+      title={product.title}
+      onView={() => {
+        setSelectedIdProduct(product.id);
+        setCurrentImage(0);
+        setShowProduct(true);
+      }}
+    />
+  ))}
+
+{(currentCategory === 0 || currentCategory === 3) &&
+  productsBag.map((product) => (
+    <CardsBag
+      key={product.id}
+      id={product.id}
+      src={product.src[0]}
+      title={product.title}
+      onView={() => {
+        setSelectedIdProduct(product.id);
+        setCurrentImage(0);
+        setShowProduct(true);
+      }}
+    />
+  ))}
+
+{(currentCategory === 0 || currentCategory === 4) &&
+  productsSaias.map((product) => (
+    <CardsSaias
+      key={product.id}
+      id={product.id}
+      src={product.src[0]}
+      title={product.title}
+      onView={() => {
+        setSelectedIdProduct(product.id);
+        setCurrentImage(0);
+        setShowProduct(true);
+      }}
+    />
+  ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+      {showProduct ? 
+      <Details
+      src={selectedProduct.src[currentImage]}
+      title={selectedProduct.title}
+      onPrevious={() => {
+      setCurrentImage((prev) =>
+        prev === 0
+        ? selectedProduct.src.length - 1
+        : prev - 1);
+        }}
+      onNext={() => {
+      setCurrentImage((prev) =>
+      prev === selectedProduct.src.length - 1
+        ? 0
+        : prev + 1);
+      }}
+      onView={() => {
+      setShowProduct(false);
+      }}
+      />
+      :
+      ""
+    } 
+    
+    </>
   );
 }
