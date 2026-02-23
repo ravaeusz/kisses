@@ -1,3 +1,6 @@
+"use client"
+import CartDrawer from '../components/CartDrawer';
+
 export default function NavBar(){
     return(
         <div className="flex flex-col md:flex-col lg:justify-between lg:flex-row items-center px-4 mx-10">

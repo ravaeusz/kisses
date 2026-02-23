@@ -1,6 +1,9 @@
 import NavBar from '../components/navbar'
 import Footer from '@/components/Footer';
 import "./globals.css";
+import { CartProvider } from "../app/context/CartContext";
+import CartDrawer from '../components/CartDrawer';
+
 
 export const metadata = {
   icons: {
@@ -11,10 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className=''>
+      <body className='overflow-x-hidden'>
+        <CartProvider>
         <NavBar />
         {children} 
-    <Footer />
+        <CartDrawer />
+       <Footer />
+     </CartProvider>
       </body>
     </html>
   );

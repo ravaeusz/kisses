@@ -29,7 +29,7 @@ const selectedProduct = allProducts.find(
 
   return (
     <>
-<div className="mt-20">
+<div className="mt-20 ">
   <div className="
     flex 
     gap-6 
@@ -95,6 +95,7 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);
@@ -110,6 +111,7 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);
@@ -125,6 +127,7 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);
@@ -140,6 +143,8 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
+      priceLabel={product.priceLabel}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);
