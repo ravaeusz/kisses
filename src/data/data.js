@@ -3,6 +3,7 @@ export const productsHeadPieces = [
   { id: '2', title: "Head Pieces | Branco", price: 70.00, src:[ "/head-pieces/head-pieces-branca1.png", "/head-pieces/head-pieces-branca2.png"]},
   { id: '3', title: "Head Pieces | Marrom", price: 70.00, src: ["/head-pieces/head-pieces-marrom1.png"] },
   { id: '4', title: "Head Pieces | Preto", price: 70.00, src: ["/head-pieces/head-pieces-preto1-catalog.png", "/head-pieces/head-pieces-preto2.png"] },
+  { id: '15', title: "Head Pieces | Bege", price: 80.00, src: ["/head-pieces/head-pieces-bege.jpeg", "/head-pieces/head-pieces-bege2.jpeg", "/head-pieces/head-pieces-bege3.jpeg"] },
 ];
 
 
@@ -37,6 +38,7 @@ export const productsBag = [
   { id: '10', title: "Bag | Maresiano e Noturno", price: 210.00, src: ["/bags/bag-maresiaenoturno1.jpeg","/bags/bag-maresianoturno2.jpeg"] },
   { id: '11', title: "Bag | Ocean", price: 130.00, src: ["/bags/bag-ocean1.png","/bags/bag-ocean2.png", "/bags/bag-ocean3.jpeg"] },
   { id: '12', title: "Bag | Pérola", price: 170.00, src: ["/bags/bag-perola1.jpeg", "/bags/bag-perola2.png","/bags/bag-perola3.png"] },
+  { id: '14', title: "Bag | Silent", price: 330.00, src: ["/bags/bag-silent.jpeg","/bags/bag-silent2.jpeg", "/bags/bag-silent3.jpeg"] },
 ];
 
 
