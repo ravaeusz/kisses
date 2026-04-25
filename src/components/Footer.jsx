@@ -1,9 +1,17 @@
+import Image from "next/image";
+
 export default function Footer(){
   return (
     <footer className="w-full border-t border-pink-950 bg-white">
       <div className="max-w-7xl mx-auto px-6 md:px- lg:px-12 py-8 md:py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <img src="/logo.png" alt="Kisses" className="w-40 object-contain" />
+          <Image 
+            src="/logo.png" 
+            alt="Kisses" 
+            className="w-40 object-contain"
+            width={160}
+            height={60}
+          />
         </div>
 
         <div className="text-center text-sm md:text-base text-gray-600">

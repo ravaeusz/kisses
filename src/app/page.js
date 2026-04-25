@@ -8,6 +8,7 @@ import { useState } from 'react';
 import {productsHeadPieces, productsTop, productsBag, productsSaias} from '../data/data'
 import Details from "../components/details.jsx"
 import Footer from '../components/Footer'
+import Image from 'next/image';
 
 export default function Home() {
 
@@ -29,7 +30,7 @@ const selectedProduct = allProducts.find(
 
   return (
     <>
-<div className="mt-20">
+<div className="mt-20 ">
   <div className="
     flex 
     gap-6 
@@ -86,6 +87,7 @@ const selectedProduct = allProducts.find(
   xl:grid-cols-4
   gap-8
   justify-items-center
+  pb-10
 ">
 
   {(currentCategory === 0 || currentCategory === 1) &&
@@ -95,6 +97,7 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);
@@ -110,6 +113,7 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);
@@ -125,6 +129,7 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);
@@ -140,6 +145,8 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
+      price={product.price}
+      priceLabel={product.priceLabel}
       onView={() => {
         setSelectedIdProduct(product.id);
         setCurrentImage(0);

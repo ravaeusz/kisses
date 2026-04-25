@@ -1,2 +1,16 @@
 @import "tailwindcss";
 
+body {
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+/* Animação Shimmer para Skeleton Loading */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

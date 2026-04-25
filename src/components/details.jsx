@@ -1,4 +1,8 @@
+import Image from "next/image";
+import { useState } from "react";
+
 export default function Details(props){
+    const [isLoading, setIsLoading] = useState(true);
     return(
         <div
       className="fixed inset-0 flex items-center justify-center z-50 bg-black/50"
@@ -23,11 +27,23 @@ export default function Details(props){
             <div className="relative flex flex-col gap-8">
               <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
                 <div className="w-full md:w-1/2 flex justify-center relative">
-                  <img
-                    src={props.src}
-                    alt={props.title}
-                    className="w-full max-w-sm md:max-w-md object-contain rounded-xl"
-                  />
+                  <div className="relative w-full max-w-sm md:max-w-md">
+                    {isLoading && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse rounded-xl" />
+                    )}
+                    <Image
+                      src={props.src}
+                      alt={props.title}
+                      width={400}
+                      height={400}
+                      quality={85}
+                      priority={true}
+                      onLoadingComplete={() => setIsLoading(false)}
+                      className={`w-full object-contain rounded-xl transition-opacity duration-300 ${
+                        isLoading ? "opacity-0" : "opacity-100"
+                      }`}
+                    />
+                  </div>
                   
                   <button
                     onClick={props.onPrevious}
