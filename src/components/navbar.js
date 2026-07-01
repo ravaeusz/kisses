@@ -1,17 +1,31 @@
 "use client"
 import CartDrawer from '../components/CartDrawer';
+import Image from 'next/image';
 
 export default function NavBar(){
     return(
         <div className="flex flex-col md:flex-col lg:justify-between lg:flex-row items-center px-4 mx-10">
             <div className="opacity-1 flex-1 flex items-center w-full lg:w-auto">
                 <button className="hidden lg:block cursor-pointer">
-                    <img className="w-8.75" src="/components/menu.png" alt="menu" />
+                    <Image 
+                      className="w-8.75" 
+                      src="/components/menu.png" 
+                      alt="menu"
+                      width={32}
+                      height={32}
+                    />
                 </button>
             </div>
 
             <div className="flex-none border-b lg:px-20 pb-2 w-full lg:w-auto">
-                <img className="w-40 md:w-56 lg:w-65 mx-auto" src="/logo.png" alt="logo" />
+                <Image 
+                  className="w-40 md:w-56 lg:w-65 mx-auto" 
+                  src="/logo.png" 
+                  alt="logo"
+                  width={280}
+                  height={100}
+                  priority
+                />
             </div>
 
             <div className="flex-1 flex items-center justify-end gap-4 w-full lg:w-auto ">
