@@ -1,5 +1,6 @@
 
 "use client"
+import Image from "next/image"
 import { useCart } from "../app/context/CartContext"
 
 export default function CardsSaias(props,id){
@@ -11,11 +12,13 @@ const { addToCart } = useCart()
         shadow-sm overflow-hidden transition-transform duration-200 
         hover:shadow-md hover:-translate-y-1">
 
-      <div className="h-108 w-full overflow-hidden bg-gray-100">
-        <img
+      <div className="relative h-108 w-full overflow-hidden bg-gray-100">
+        <Image
           src={props.src}
           alt={props.title || 'card image'}
-          className="w-full h-full object-cover"
+          fill
+          sizes="320px"
+          className="object-cover"
         />
       </div>
 
@@ -25,8 +28,8 @@ const { addToCart } = useCart()
           {props.title}
         </h3>
 
-          <p className="text-pink-950 font-bold">
-            Consulte valores
+          <p className="text-pink-950 font-bold text-lg">
+            {props.price != null ? `R$ ${props.price.toFixed(2)}` : "Consulte valores"}
           </p>
 
 
@@ -36,8 +39,9 @@ const { addToCart } = useCart()
          
           <button 
             onClick={props.onView}
+            aria-label={`Ver ${props.title}`}
             className="cursor-pointer px-6 bg-pink-950 rounded-2xl hover:bg-pink-900 active:bg-pink-800">
-              <img className="w-6" src="/components/olho.png" />
+              <Image src="/components/olho.png" alt="" width={24} height={24} />
           </button>
 
           

@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import { useCart } from "../app/context/CartContext"
 import { useState } from "react"
 
@@ -87,8 +88,11 @@ export default function CartDrawer() {
               {cartItems.map(item => (
                 <div key={item.id} className="flex gap-4 border-b pb-4">
 
-                  <img
+                  <Image
                     src={item.image}
+                    alt={item.title}
+                    width={64}
+                    height={64}
                     className="w-16 h-16 object-cover rounded-lg"
                   />
 

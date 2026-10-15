@@ -4,8 +4,9 @@ import CardsHeadPieces from '../components/cardsHeadPieces'
 import CardsTop from '@/components/cardsTop'; 
 import CardsBag from '@/components/cardsBag';
 import CardsSaias from '@/components/cardsSaias';
+import CardLenco from '@/components/cardLenco';
 import { useState } from 'react';
-import {productsHeadPieces, productsTop, productsBag, productsSaias} from '../data/data'
+import {productsHeadPieces, productsTop, productsBag, productsLencos, productsSaias} from '../data/data'
 import Details from "../components/details.jsx"
 import Footer from '../components/Footer'
 import Image from 'next/image';
@@ -21,6 +22,7 @@ const allProducts = [
   ...productsHeadPieces,
   ...productsTop,
   ...productsBag,
+  ...productsLencos,
   ...productsSaias
 ]
 
@@ -42,12 +44,17 @@ const selectedProduct = allProducts.find(
   ">
     
     <button onClick={() => {
+      setCurrentCategory(5)
+    }} className="hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
+      <img className="w-24 h-24 rounded-full border object-cover" src="/categories/lenco.png" alt="Lenço Ofélia" />
+      <h1>Lenço</h1>
+    </button>
+    <button onClick={() => {
       setCurrentCategory(1)
     }} className=" hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
       <img className="w-24 h-24 rounded-full border object-cover" src="/categories/head.png" />
       <h1>Head Pieces</h1>
     </button>
-    
     <button onClick={() => {
       setCurrentCategory(2)
     }} className="hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
@@ -60,9 +67,6 @@ const selectedProduct = allProducts.find(
       <img className="w-24 h-24 rounded-full border object-cover" src="/categories/bags.png" />
       <h1>Bags</h1>
     </button>
-
-
-
     <button onClick={() => {
       setCurrentCategory(4)
     }} className="hover:text-pink-950 hover:border-pink-950 cursor-pointer shrink-0 flex flex-col items-center gap-2">
@@ -88,8 +92,24 @@ const selectedProduct = allProducts.find(
   gap-8
   justify-items-center
   pb-10
-">
+  ">
 
+    {(currentCategory === 0 || currentCategory === 5) &&
+      productsLencos.map((product) => (
+        <CardLenco
+          key={product.id}
+          id={product.id}
+          src={product.src[0]}
+          title={product.title}
+          price={product.price}
+          priceLabel={product.priceLabel}
+          onView={() => {
+            setSelectedIdProduct(product.id);
+            setCurrentImage(0);
+            setShowProduct(true);
+          }}
+        />
+      ))}
   {(currentCategory === 0 || currentCategory === 1) &&
   productsHeadPieces.map((product) => (
     <CardsHeadPieces
@@ -138,6 +158,7 @@ const selectedProduct = allProducts.find(
     />
   ))}
 
+
 {(currentCategory === 0 || currentCategory === 4) &&
   productsSaias.map((product) => (
     <CardsSaias
@@ -145,7 +166,7 @@ const selectedProduct = allProducts.find(
       id={product.id}
       src={product.src[0]}
       title={product.title}
-      price={product.price}
+      price={product.price} 
       priceLabel={product.priceLabel}
       onView={() => {
         setSelectedIdProduct(product.id);
@@ -160,6 +181,8 @@ const selectedProduct = allProducts.find(
       <Details
       src={selectedProduct.src[currentImage]}
       title={selectedProduct.title}
+      currentImage={currentImage}
+      imageCount={selectedProduct.src.length}
       onPrevious={() => {
       setCurrentImage((prev) =>
         prev === 0
